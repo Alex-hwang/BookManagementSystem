@@ -92,8 +92,7 @@ void Management::deleteUser()
 void Management::showUserList() const
 {
 	system("cls");
-	for (const auto& user : m_userList)
-	{
+	for (const auto& user : m_userList) {
 		user.showUserInfo();
 	}
 	system("pause");
@@ -106,10 +105,8 @@ void Management::searchUser() const
 	std::cout << "请输入要查找的用户名：";
 	std::cin.ignore();
 	std::getline(std::cin, name);
-	for (const auto& user : m_userList)
-	{
-		if (user.getName() == name)
-		{
+	for (const auto& user : m_userList) {
+		if (user.getName() == name) {
 			user.showUserInfo();
 			return;
 		}
@@ -123,10 +120,8 @@ void Management::modifyUserInfo()
 	std::cout << "请输入要修改的用户名：";
 	std::cin.ignore();
 	std::getline(std::cin, name);
-	for (auto& user : m_userList)
-	{
-		if (user.getName() == name)
-		{
+	for (auto& user : m_userList) {
+		if (user.getName() == name) {
 			user.modifyPersonInfo();
 			return;
 		}
@@ -188,10 +183,8 @@ void Management::deleteVisitor()
 	std::cout << "未找到该访客！" << std::endl;
 }
 
-void Management::showVisitorList() const
-{
-	for (const auto& visitor : m_visitorList)
-	{
+void Management::showVisitorList() const {
+	for (const auto& visitor : m_visitorList) {
 		visitor.showVisitorInfo();
 	}
 }
@@ -202,10 +195,8 @@ void Management::searchVisitor() const
 	std::cout << "请输入要查找的访客名：";
 	std::cin.ignore();
 	std::getline(std::cin, name);
-	for (const auto& visitor : m_visitorList)
-	{
-		if (visitor.getName() == name)
-		{
+	for (const auto& visitor : m_visitorList) {
+		if (visitor.getName() == name) {
 			visitor.showVisitorInfo();
 			return;
 		}
@@ -219,10 +210,8 @@ void Management::modifyVisitorInfo()
 	std::cout << "请输入要修改的访客名：";
 	std::cin.ignore();
 	std::getline(std::cin, name);
-	for (auto& visitor : m_visitorList)
-	{
-		if (visitor.getName() == name)
-		{
+	for (auto& visitor : m_visitorList) {
+		if (visitor.getName() == name) {
 			visitor.modifyPersonInfo();
 			return;
 		}
@@ -304,10 +293,8 @@ void Management::deleteAdmin()
 	std::cout << "未找到该管理员！" << std::endl;
 }
 
-void Management::showAdminList() const
-{
-	for (const auto& admin : m_adminList)
-	{
+void Management::showAdminList() const {
+	for (const auto& admin : m_adminList) {
 		admin.showAdminInfo();
 	}
 }
@@ -318,10 +305,8 @@ void Management::searchAdmin() const
 	std::cout << "请输入要查找的管理员名：";
 	std::cin.ignore();
 	std::getline(std::cin, name);
-	for (const auto& admin : m_adminList)
-	{
-		if (admin.getName() == name)
-		{
+	for (const auto& admin : m_adminList) {
+		if (admin.getName() == name) {
 			admin.showAdminInfo();
 			return;
 		}
@@ -335,10 +320,8 @@ void Management::modifyAdminInfo()
 	std::cout << "请输入要修改的管理员名：";
 	std::cin.ignore();
 	std::getline(std::cin, name);
-	for (auto& admin : m_adminList)
-	{
-		if (admin.getName() == name)
-		{
+	for (auto& admin : m_adminList) {
+		if (admin.getName() == name) {
 			admin.modifyPersonInfo();
 			return;
 		}
@@ -408,15 +391,6 @@ void Management::addBook()
 	book.setBorrowed(borrowed);
 	book.setBorrowTimes(borrowTimes);
 	book.setBorrowHistory(borrowHistory);
-	// 检查是否有重复的书籍
-	for (const auto& b : m_bookList)
-	{
-		if (b == book)
-		{
-			std::cout << "该书籍已存在！" << std::endl;
-			return;
-		}
-	}
 	m_bookList.push_back(book);
 	std::cout << "书籍 " << title << " 添加成功！" << std::endl;
 	system("pause");
@@ -452,11 +426,8 @@ void Management::deleteBook()
 	std::cout << "未找到该书籍！" << std::endl;
 }
 
-void Management::showBookList()
-{
-	system("cls");
-	for (auto& book : m_bookList)
-	{
+void Management::showBookList() {
+	for (auto& book : m_bookList) {
 		book.showBookInfo();
 	}
 }
@@ -477,10 +448,8 @@ void Management::searchBookSpecifically()
 			break;
 		}
 	}
-	for (auto& book : m_bookList)
-	{
-		if (book.isMatchISBN(ISBN))
-		{
+	for (auto& book : m_bookList) {
+		if (book.isMatchISBN(ISBN)) {
 			book.showBookInfo();
 			return;
 		}
@@ -494,19 +463,14 @@ void Management::borrowBook()
 	std::cout << "请输入要借阅的书名：";
 	std::cin.ignore();
 	std::getline(std::cin, title);
-	for (auto& book : m_bookList)
-	{
-		if (book.getTitle() == title)
-		{
-			if (!book.isBorrowed())
-			{
+	for (auto& book : m_bookList) {
+		if (book.getTitle() == title) {
+			if (!book.isBorrowed()) {
 				std::string userName;
 				std::cout << "请输入借阅者姓名：";
 				std::getline(std::cin, userName);
-				for (auto& user : m_userList)
-				{
-					if (user.getName() == userName)
-					{
+				for (auto& user : m_userList) {
+					if (user.getName() == userName) {
 						user.borrowBook(title);
 						book.setBorrowed(true);
 						book.borrowBook(user);
@@ -533,19 +497,14 @@ void Management::returnBook()
 	std::cout << "请输入要归还的书名：";
 	std::cin.ignore();
 	std::getline(std::cin, title);
-	for (auto& book : m_bookList)
-	{
-		if (book.getTitle() == title)
-		{
-			if (book.isBorrowed())
-			{
+	for (auto& book : m_bookList) {
+		if (book.getTitle() == title) {
+			if (book.isBorrowed()) {
 				std::string userName;
 				std::cout << "请输入归还者姓名：";
 				std::getline(std::cin, userName);
-				for (auto& user : m_userList)
-				{
-					if (user.getName() == userName)
-					{
+				for (auto& user : m_userList) {
+					if (user.getName() == userName) {
 						user.returnBook(title);
 						book.setBorrowed(false);
 						std::cout << "归还成功！" << std::endl;
@@ -589,12 +548,10 @@ void Management::saveData()
 		}
 	}
 
-	for (const auto& user : m_userList)
-	{
+	for (const auto& user : m_userList) {
 		outFile << "User," << user.getName() << "," << user.getPhone() << "," << user.getborrowingNum() << ",";
 		const auto& history = user.getBorrowedHistory();
-		for (auto it = history.begin(); it != history.end(); ++it)
-		{
+		for (auto it = history.begin(); it != history.end(); ++it) {
 			outFile << *it;
 			if (std::next(it) != history.end())
 				outFile << ";";
@@ -602,17 +559,14 @@ void Management::saveData()
 		outFile << std::endl;
 	}
 
-	for (const auto& visitor : m_visitorList)
-	{
+	for (const auto& visitor : m_visitorList) {
 		outFile << "Visitor," << visitor.getName() << "," << visitor.getPhone() << "," << visitor.getVisitNum() << std::endl;
 	}
 
-	for (const auto& admin : m_adminList)
-	{
+	for (const auto& admin : m_adminList) {
 		outFile << "Admin," << admin.getName() << "," << admin.getPhone() << "," << admin.getVisitNum() << "," << admin.getborrowingNum() << "," << admin.getAuthority() << ",";
 		const auto& history = admin.getBorrowedHistory();
-		for (auto it = history.begin(); it != history.end(); ++it)
-		{
+		for (auto it = history.begin(); it != history.end(); ++it) {
 			outFile << *it;
 			if (std::next(it) != history.end())
 				outFile << ";";
@@ -620,22 +574,19 @@ void Management::saveData()
 		outFile << std::endl;
 	}
 
-	for (auto& book : m_bookList)
-	{
+	for (auto& book : m_bookList) {
 		outFile << "Book," << book.getTitle() << "," << book.getAuthor() << "," << book.getType() << ","
 			<< book.getIntroduction() << "," << book.getISBN() << "," << book.getBorrowed() << ","
 			<< book.getBorrowTimes() << "," << book.getPrice() << ",";
 		const auto& keywords = book.getKeywords();
-		for (auto it = keywords.begin(); it != keywords.end(); ++it)
-		{
+		for (auto it = keywords.begin(); it != keywords.end(); ++it) {
 			outFile << *it;
 			if (std::next(it) != keywords.end())
 				outFile << ";";
 		}
 		outFile << ",";
 		const auto& borrowHistory = book.getBorrowHistory();
-		for (auto it = borrowHistory.begin(); it != borrowHistory.end(); ++it)
-		{
+		for (auto it = borrowHistory.begin(); it != borrowHistory.end(); ++it) {
 			outFile << *it;
 			if (std::next(it) != borrowHistory.end())
 				outFile << ";";
@@ -934,10 +885,8 @@ void Management::readData()
 }
 
 // 移除字符串末尾的逗号
-void removeTrailingComma(std::string& str)
-{
-	if (!str.empty() && str.back() == ',')
-	{
+void removeTrailingComma(std::string& str) {
+	if (!str.empty() && str.back() == ',') {
 		str.pop_back();
 	}
 }
@@ -1237,8 +1186,7 @@ void Management::searchBook(std::vector<Book> m_bookList)
 	// 将查询字符串转换为小写，以实现不区分大小写的搜索
 	std::transform(lowerQuery.begin(), lowerQuery.end(), lowerQuery.begin(), ::tolower);
 
-	for (auto& book : m_bookList)
-	{
+	for (auto& book : m_bookList) {
 		std::string title = book.getTitle();
 		std::vector<string> keywords = book.getKeywords();
 		std::string description = book.getIntroduction();
@@ -1263,39 +1211,31 @@ void Management::searchBook(std::vector<Book> m_bookList)
 	{
 		std::cout << "未找到相关书籍！" << std::endl;
 	}
-	else
-	{
-		for (auto& book : result)
-		{
+	else {
+		for (auto& book : result) {
 			book.showBookInfo();
 		}
 	}
 }
 
-void Management::showMostPopularBooks()
-{
-	std::sort(m_bookList.begin(), m_bookList.end(), [](Book& a, Book& b)
-		{
-			return a.getBorrowTimes() > b.getBorrowTimes(); // 根据借阅次数降序排序
+void Management::showMostPopularBooks() {
+	std::sort(m_bookList.begin(), m_bookList.end(), [](Book& a, Book& b) {
+		return a.getBorrowTimes() > b.getBorrowTimes(); // 根据借阅次数降序排序
 		});
 
 	std::cout << "最受欢迎的书籍榜单：" << std::endl;
-	for (auto& book : m_bookList)
-	{
+	for (auto& book : m_bookList) {
 		std::cout << "书名：" << book.getTitle() << ", 借阅次数：" << book.getBorrowTimes() << std::endl;
 	}
 }
 
-void Management::showTopBorrowers()
-{
-	std::sort(m_userList.begin(), m_userList.end(), [](User& a, User& b)
-		{
-			return a.getborrowingNum() > b.getborrowingNum(); // 根据借阅数量降序排序
+void Management::showTopBorrowers() {
+	std::sort(m_userList.begin(), m_userList.end(), [](User& a, User& b) {
+		return a.getborrowingNum() > b.getborrowingNum(); // 根据借阅数量降序排序
 		});
 
 	std::cout << "用户借阅量榜单：" << std::endl;
-	for (auto& user : m_userList)
-	{
+	for (auto& user : m_userList) {
 		std::cout << "用户名：" << user.getName() << ", 借阅数量：" << user.getborrowingNum() << std::endl;
 	}
 }
@@ -1306,10 +1246,8 @@ void Management::modifyBookInfo()
 	std::cout << "请输入要修改的书名：";
 	std::cin.ignore();
 	std::getline(std::cin, title);
-	for (auto& book : m_bookList)
-	{
-		if (book.getTitle() == title)
-		{
+	for (auto& book : m_bookList) {
+		if (book.getTitle() == title) {
 			book.modifyBookInfo();
 			return;
 		}
