@@ -4,12 +4,17 @@
 
 #include "Management.h"
 #include <iostream>
-#include<algorithm>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
+	//Management m;
+	//m.start();
+
+	// 测试代码
 	Management m;
+	m.readData();
 	m.start();
 
 	return 0;

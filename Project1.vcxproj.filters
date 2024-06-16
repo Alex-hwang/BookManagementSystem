@@ -44,5 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="任务清单.md" />
+    <None Include="draw_chart.py">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

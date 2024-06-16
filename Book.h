@@ -1,7 +1,7 @@
-#pragma once
-#define _CRT_SECURE_NO_WARNINGS
 #ifndef BOOK_H
 #define BOOK_H
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <string>
@@ -69,6 +69,9 @@ public:
 	bool isMatchIntroduction(std::string introduction);
 	// 模糊判断
 	bool isMatch(std::string word);
+
+	// 运算符重载
+	bool operator==(const Book& rhs) const;
 
 	// 精准查询
 	// 判断书是否匹配ISBN号
