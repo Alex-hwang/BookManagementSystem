@@ -8,27 +8,33 @@ Person::Person(std::string name, std::string phone) : m_name(name), m_phone(phon
 
 Person::~Person() {}
 
-std::string Person::getName() const {
+std::string Person::getName() const
+{
 	return m_name;
 }
 
-std::string Person::getPhone() const {
+std::string Person::getPhone() const
+{
 	return m_phone;
 }
 
-void Person::setName(std::string name) {
+void Person::setName(std::string name)
+{
 	m_name = name;
 }
 
-void Person::setPhone(std::string phone) {
+void Person::setPhone(std::string phone)
+{
 	m_phone = phone;
 }
 
-void Person::showPersonInfo() const {
+void Person::showPersonInfo() const
+{
 	std::cout << "Name: " << m_name << ", Phone: " << m_phone << std::endl;
 }
 
-void Person::modifyPersonInfo() {
+void Person::modifyPersonInfo()
+{
 	std::cout << "Enter new name: ";
 	std::cin >> m_name;
 	std::cout << "Enter new phone: ";
@@ -45,53 +51,65 @@ User::User(std::string name, std::string phone, int borrowingNum, std::vector<st
 
 User::~User() {}
 
-int User::getborrowingNum() const {
+int User::getborrowingNum() const
+{
 	return m_borrowingNum;
 }
 
-int User::getBorrowedNum() const {
+int User::getBorrowedNum() const
+{
 	return m_borrowedNum;
 }
 
-std::vector<std::string> User::getBorrowedHistory() const {
+std::vector<std::string> User::getBorrowedHistory() const
+{
 	return m_borrowedHistory;
 }
 
-void User::setborrowingNum(int borrowingNum) {
+void User::setborrowingNum(int borrowingNum)
+{
 	m_borrowingNum = borrowingNum;
 }
 
-void User::setBorrowedHistory(std::vector<std::string> borrowedHistory) {
+void User::setBorrowedHistory(std::vector<std::string> borrowedHistory)
+{
 	m_borrowedHistory = borrowedHistory;
 }
 
-void User::showUserInfo() const {
+void User::showUserInfo() const
+{
 	showPersonInfo();
 	std::cout << "Borrowed Number: " << m_borrowingNum << std::endl;
 	std::cout << "Borrowed History: ";
-	for (const auto& book : m_borrowedHistory) {
+	for (const auto &book : m_borrowedHistory)
+	{
 		std::cout << book << " ";
 	}
 	std::cout << std::endl;
 }
 
-void User::borrowBook(std::string bookName) {
+void User::borrowBook(std::string bookName)
+{
 	m_borrowingNum++;
 	m_borrowedNum++;
 	m_borrowedHistory.push_back(bookName);
 }
 
-void User::returnBook(std::string bookName) {
+void User::returnBook(std::string bookName)
+{
 	auto it = std::find(m_borrowedHistory.begin(), m_borrowedHistory.end(), bookName);
-	if (it != m_borrowedHistory.end() && m_borrowingNum > 0) {
-		//m_borrowingNum--;
+	if (it != m_borrowedHistory.end() && m_borrowingNum > 0)
+	{
+		// m_borrowingNum--;
 		return;
 	}
 }
 
-void User::showBorrowHistory() const {
+void User::showBorrowHistory() const
+{
 	std::cout << "Borrowed History: ";
-	for (const auto& book : m_borrowedHistory) {
+	for (const auto &book : m_borrowedHistory)
+	{
 		std::cout << book << " ";
 	}
 	std::cout << std::endl;
@@ -106,21 +124,25 @@ Visitor::Visitor(std::string name, std::string phone, int visitNum) : Person(nam
 
 Visitor::~Visitor() {}
 
-int Visitor::getVisitNum() const {
+int Visitor::getVisitNum() const
+{
 	return m_visitNum;
 }
 
-void Visitor::setVisitNum(int visitNum) {
+void Visitor::setVisitNum(int visitNum)
+{
 	m_visitNum = visitNum;
 }
 
-void Visitor::modifyVisitorInfo() {
+void Visitor::modifyVisitorInfo()
+{
 	modifyPersonInfo();
 	std::cout << "Enter new visit number: ";
 	std::cin >> m_visitNum;
 }
 
-void Visitor::showVisitorInfo() const {
+void Visitor::showVisitorInfo() const
+{
 	showPersonInfo();
 	std::cout << "Visit Number: " << m_visitNum << std::endl;
 }
@@ -136,21 +158,25 @@ Admin::Admin(std::string name, std::string phone, int borrowingNum, std::vector<
 
 Admin::~Admin() {}
 
-int Admin::getAuthority() const {
+int Admin::getAuthority() const
+{
 	return m_authority;
 }
 
-void Admin::setAuthority(int authority) {
+void Admin::setAuthority(int authority)
+{
 	m_authority = authority;
 }
 
-void Admin::modifyAdminInfo() {
+void Admin::modifyAdminInfo()
+{
 	modifyPersonInfo();
 	std::cout << "Enter new authority level: ";
 	std::cin >> m_authority;
 }
 
-void Admin::showAdminInfo() const {
+void Admin::showAdminInfo() const
+{
 	showUserInfo();
 	showVisitorInfo();
 	std::cout << "Authority Level: " << m_authority << std::endl;

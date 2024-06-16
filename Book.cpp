@@ -261,6 +261,7 @@ void Book::modifyBookInfo()
 	cout << "请输入类型：";
 	cin >> m_type;
 	cout << "请输入关键词：";
+	m_keywords.clear();
 	while (true)
 	{
 		std::string keyword;
@@ -302,4 +303,9 @@ void Book::modifyBookInfo()
 			break;
 		}
 	}
+}
+
+bool Book::operator==(const Book& rhs) const
+{
+	return m_name == rhs.m_name && m_author == rhs.m_author && m_type == rhs.m_type && m_keywords == rhs.m_keywords && m_introduction == rhs.m_introduction && m_borrowed == rhs.m_borrowed && m_borrowHistory == rhs.m_borrowHistory && m_borrowTimes == rhs.m_borrowTimes && m_ISBN == rhs.m_ISBN && m_price == rhs.m_price;
 }

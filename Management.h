@@ -1,19 +1,12 @@
-#pragma once
+#ifndef MANAGEMENT_H // 如果没有定义MANAGEMENT_H
+#define MANAGEMENT_H // 定义MANAGEMENT_H
 
-#include <iostream>
-#include <algorithm>
-#include<sstream>
-#include<fstream>
-#include<istream>
-#include<ostream>
 #include <vector>
-#include <string>
-#include <windows.h>
-#include <iomanip>
 #include "Person.h"
 #include "Book.h"
 
-class Management {
+class Management
+{
 public:
 	Management();
 	~Management();
@@ -51,7 +44,7 @@ public:
 
 	// 报表功能
 	void showMostPopularBooks(); // 显示最受欢迎的书籍榜单
-	void showTopBorrowers(); // 显示用户借阅量榜单
+	void showTopBorrowers();	 // 显示用户借阅量榜单
 
 	// 数据管理
 	void saveData();
@@ -74,3 +67,5 @@ private:
 	std::vector<Admin> m_adminList;
 	std::vector<Book> m_bookList;
 };
+
+#endif // MANAGEMENT_H // 结束预处理指令

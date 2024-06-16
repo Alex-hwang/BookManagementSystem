@@ -4,7 +4,7 @@
 
 #include "Management.h"
 #include <iostream>
-#include<algorithm>
+#include <algorithm>
 using namespace std;
 
 int main()
