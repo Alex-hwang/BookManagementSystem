@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/文档/大学资料/程序设计C++/图书管理系统/Project1",
-      "program": "d:/文档/大学资料/程序设计C++/图书管理系统/Project1/build/Debug/outDebug",
+      "cwd": "d:/Code/Project1",
+      "program": "d:/Code/Project1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

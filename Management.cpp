@@ -10,7 +10,7 @@ Management::Management()
 	std::cout << endl;
 
 	// 版权信息和软件基本信息
-	std::cout << "版本：1.0.0" << std::endl;
+	std::cout << "版本：1.2.0" << std::endl;
 	std::cout << "版权所有 Copyright 2024 图书管理系统团队" << std::endl;
 	std::cout << "本软件用于管理图书馆的书籍和用户信息。" << std::endl;
 	// std::cout << "官方网站：https://www.tsinghua.edu.cn" << std::endl;
@@ -1223,10 +1223,13 @@ void Management::showMostPopularBooks() {
 		return a.getBorrowTimes() > b.getBorrowTimes(); // 根据借阅次数降序排序
 		});
 
+	system("cls");
 	std::cout << "最受欢迎的书籍榜单：" << std::endl;
 	for (auto& book : m_bookList) {
 		std::cout << "书名：" << book.getTitle() << ", 借阅次数：" << book.getBorrowTimes() << std::endl;
 	}
+	system("pause");
+	system("cls");
 }
 
 void Management::showTopBorrowers() {

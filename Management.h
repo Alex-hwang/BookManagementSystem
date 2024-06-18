@@ -1,6 +1,7 @@
 #ifndef MANAGEMENT_H // 如果没有定义MANAGEMENT_H
 #define MANAGEMENT_H // 定义MANAGEMENT_H
-
+#pragma warning(disable : 4996)
+#define _CRT_SECURE_NO_WARNINGS
 #include <vector>
 #include <cstdlib>
 #include "Person.h"
